@@ -17,5 +17,9 @@ class BuyerModel(models.Model):
     )
 
     PAYMENT_CONTRACT = (
-        ()
+        ("Deposit + 3months","Deposit + 3months")
+        ("Deposit + 6months","Deposit + 6months")
+        ("Deposit + 12months","Deposit + 12months")
+        ("Deposit + 24months","Deposit + 24months")
+        ("One time","One time")
     )
