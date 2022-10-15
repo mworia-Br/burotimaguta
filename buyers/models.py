@@ -4,7 +4,7 @@ from django.db import models
 from plots.models import Plot,Plot_Number
 
 
-class BuyerModel(models.Model):
+class BuyerInfo(models.Model):
     GENDER_OPTIONS =(
         ("M","Male")
         ("F","Female")
@@ -46,3 +46,28 @@ class BuyerModel(models.Model):
 
     def __str__(self):
         return self.last_name
+
+
+class BuyerPayments(models.Model):
+
+    payment_Methods = (
+        ("cash","cash")
+        ("Mpesa","Mpesa")
+        ("Check","Check")
+        ("Bank Deposit","Bank Deposit")
+    )
+
+    transaction_Status = (
+        ("In Process","In Process")
+        ("Received","Received")
+        ("Verified","Verified")
+    )
+
+    amount = models.IntegerField(max_length=15, null=True)
+    paymentFrom = models.ForeignKey(BuyerInfo, on_delete=models.CASCADE)
+    paidFor = models.CharField(choices=payment_Methods, null=True)
+    paymentMethod = models.CharField(max_length=15, null=True)
+    dateReceived = models.DateField(null=True)
+    receivedBy = models.CharField(max_length=15, null=True)
+    paymentstatus = models.CharField(choices=transaction_Status, default="In Process")
+    
