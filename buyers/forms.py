@@ -52,6 +52,30 @@ class BuyersForm(ModelForm):
 
 
 class PaymentForm(ModelForm):
+    dateReceived = forms.DateField(widget=forms.TextInput(attrs={'class': 'datepicker'}))
+
+    def __init__(self, *args, **kwargs):
+        self.helper = FormHelper()
+        self.helper.layout = Layout(
+            Div(
+                Div(Field('dateReceived'), css_class='col-md-4', ),
+                Div(Field('transactionId'), css_class='col-md-4', ),
+                Div(Field('amount'), css_class='col-md-4', ),
+                Div(Field('paymentFrom'), css_class='col-md-4', ),
+                Div(Field('paymentMethod'), css_class='col-md-4', ),
+                Div(Field('paidFor'), css_class='col-md-4', ),
+                Div(Field('receivedby'), css_class='col-md-4', ),
+                Div(Field('paymentstatus'), css_class='col-md-4', ),
+                css_class='row',
+            ),
+            ButtonHolder(
+                Submit('submit', 'Save', css_class='button white')
+            )
+        )
+        super(PaymentForm, self).__init__(*args, **kwargs)
+
+
+
     class Meta:
         model = BuyerPayments
         fields = "__all__"

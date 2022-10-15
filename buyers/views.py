@@ -21,7 +21,28 @@ def buyers(request):
             messages.error(request, "Error adding buyer")
     else:
         form = BuyersForm()
-    return render(request, 'buyers/buyers.html', {'buyers':buyers,'buyers_form': form})
+    return render(request, 'burotimaguta/buyers.html', {'buyers':buyers,'buyers_form': form})
+
+
+def create_buyer(request):
+    if request.method == 'POST':
+        form = BuyersForm(data=request.POST, files=request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Buyer added booking successfuly initiated")
+            return redirect('burotimaguta:buyers')
+        else:
+            messages.error(request, "Error adding buyer")
+
+    else:
+        form = BuyersForm()
+
+    return render(request, 'burotimaguta/buyers.html', {'buyers_form': form})
+
+
+def buyer_detail(request, buyer_id):
+    buyer = get_object_or_404(BuyerInfo, pk=buyer_id)
+    return render(request, 'burotimaguta/buyer_detail.html', {'buyer': buyer})
 
 
 def record_payment(request):
@@ -37,4 +58,56 @@ def record_payment(request):
     else:
         form = PaymentsForm()
 
-    return render(request, 'buyer/payments.html', {'form': form})        
+    return render(request, 'buyers/payments.html', {'form': form})
+
+def edit_payment(request, payment_id):
+    payment = get_object_or_404(BuyerPayments, id=payment_id)
+    if request.method == 'POST':
+        form = PaymentForm(request.POST, instance=payment)
+
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Payment updated successfully")
+            return HttpResponseRedirect('/payments')
+        else:
+            messages.error(request, "Error updating payment")
+    else:
+        form = PaymentForm(instance=payment)
+
+    return render(request, 'burotimaguta/edit_payment.html', {'form': form})
+
+
+def delete_payment(request, payment_id):
+    payment = get_object_or_404(BuyerPayments, id=payment_id)
+    payment.delete()
+    messages.success(request, "Payment deleted successfully")
+    return HttpResponseRedirect('/payments')
+
+
+
+
+def all_payments(request):
+    payments = BuyerPayments.objects.all()
+
+    return render(request, 'burotimaguta/payments.html', {'payments': payments})
+
+
+def buyer_edit(request, buyer_id):
+    buyer = BuyerInfo.objects.get(id=buyer_id)
+    return render(request, 'buyer_update_form.html', {'buyer': buyer})
+
+
+def buyer_update(request, buyer_id):
+    buyer = BuyerInfo.objects.get(id=buyer_id)
+
+    if request.method == 'POST':
+        form = BuyersForm(request.POST, instance=buyer, files=request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "buyer updated successfully")
+            return redirect("/buyers")
+        else:
+            messages.error(request, "error updating the buyer")
+    else:
+        form = BuyersForm(instance=buyer)
+    return render(request, 'burotimaguta/buyer_update_form.html', {'buyer': buyer, 'buyer_form': form})      
