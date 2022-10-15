@@ -34,7 +34,6 @@ class BuyerInfo(models.Model):
     kra_pin = models.CharField(max_length=11, unique=True, null=True)
     passport_photo = models.ImageField(blank=True, null=True)
     buyer_personal_number = models.CharField(max_length=50, null=True)
-    #registeredBy
     buyers_email = models.EmailField(unique=True, null=True)
     mobile_phone = models.CharField(max_length=15, null=True)
     date_of_registration = models.DateField(null=True)
@@ -43,6 +42,7 @@ class BuyerInfo(models.Model):
     contract_type = models.CharField(choices=PAYMENT_CONTRACT, max_length=100, null=True)
     deposit_amount = models.IntegerField(null=True)
     balance_amount = models.IntegerField( null=True)
+    registeredBy = models.CharField(max_length=15, null=True)
 
     def __str__(self):
         return self.last_name
