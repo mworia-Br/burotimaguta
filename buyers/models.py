@@ -39,7 +39,7 @@ class BuyerModel(models.Model):
     mobile_phone = models.CharField(max_length=15, null=True)
     date_of_registration = models.DateField(null=True)
     project_assigned = models.ForeignKey(Plot, on_delete=models.CASCADE)
-    
+    plot_booked = models.ForeignKey(Plot_Number, on_delete=models.CASCADE)
     contract_type = models.CharField(choices=PAYMENT_CONTRACT, null=True)
     deposit_amount = models.IntegerField(max_length=15, null=True)
     balance_amount = models.IntegerField(max_length=15, null=True)
