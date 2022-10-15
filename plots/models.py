@@ -20,6 +20,7 @@ class Plot(models.Model):
     images=models.FileField(upload_to='plots/images/')
     sellingprice=models.IntegerField(max_length=20,null=True)
     discountprice=models.IntegerField(max_length=20,null=True)
+    deposit=models.IntegerField(max_length=20,null=True)
     #userbooked=models.ManyToManyField(User,blank=True)
 
     def __str__(self):
