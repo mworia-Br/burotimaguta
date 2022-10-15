@@ -40,8 +40,8 @@ class BuyerModel(models.Model):
     project_assigned = models.ManyToManyField('Plot', blank=True)
     date_of_registration = models.DateField(null=True)
     contract_type = models.CharField(choices=PAYMENT_CONTRACT, max_length=1, null=True)
-    deposit_amount = models.CharField(max_length=15, null=True)
-    balance_amount = models.CharField(max_length=15, null=True)
+    deposit_amount = models.IntegerField(max_length=15, null=True)
+    balance_amount = models.IntegerField(max_length=15, null=True)
 
     def __str__(self):
         return self.last_name
