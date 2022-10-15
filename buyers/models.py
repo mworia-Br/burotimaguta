@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-from plots.models import Plot,Plot_Number
+from plots.models import Plot, Plot_Number
 
 
 class BuyerInfo(models.Model):
