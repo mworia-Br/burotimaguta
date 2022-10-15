@@ -21,5 +21,5 @@ class BuyerModel(models.Model):
         ("Deposit + 6months","Deposit + 6months")
         ("Deposit + 12months","Deposit + 12months")
         ("Deposit + 24months","Deposit + 24months")
-        ("One time","One time")
+        ("OT","OT")
     )
