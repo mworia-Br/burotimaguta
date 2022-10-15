@@ -8,6 +8,6 @@ plotsize_choices= (
     ("100*100","100*100")
 )
 
-class Book(models.Model):
+class Plot(models.Model):
     projectName=models.CharField(max_length=100)
     seller=models.CharField(max_length=100)
