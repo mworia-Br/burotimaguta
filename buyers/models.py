@@ -6,21 +6,21 @@ from plots.models import Plot, Plot_Number
 
 class BuyerInfo(models.Model):
     GENDER_OPTIONS =(
-        ("M","Male")
-        ("F","Female")
+        ("M","Male"),
+        ("F","Female"),
         ("O","Other")
     )
 
     RESIDENTIAL_OPTIONS = (
-        ('R','Resident')
+        ('R','Resident'),
         ("NR","Non-Resident")
     )
 
     PAYMENT_CONTRACT = (
-        ("Deposit + 3months","Deposit + 3months")
-        ("Deposit + 6months","Deposit + 6months")
-        ("Deposit + 12months","Deposit + 12months")
-        ("Deposit + 24months","Deposit + 24months")
+        ("Deposit + 3months","Deposit + 3months"),
+        ("Deposit + 6months","Deposit + 6months"),
+        ("Deposit + 12months","Deposit + 12months"),
+        ("Deposit + 24months","Deposit + 24months"),
         ("OT","OT")
     )
     first_name = models.CharField(max_length=255, null=True)
