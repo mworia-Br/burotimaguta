@@ -16,12 +16,12 @@ class Plot(models.Model):
     location=models.CharField(max_length=100)
     description=models.TextField()
     nearbyAmenities=models.TextField()
-    availableUnits=models.IntegerField(max_length=4)
+    availableUnits=models.IntegerField(null=True)
     plotsize=models.CharField(max_length=30,choices=plotsize_choices,default="")
     images=models.FileField(upload_to='plots/projectimages/')
-    sellingprice=models.IntegerField(max_length=20,null=True)
-    discountprice=models.IntegerField(max_length=20,null=True)
-    deposit=models.IntegerField(max_length=20,null=True)
+    sellingprice=models.IntegerField(null=True)
+    discountprice=models.IntegerField(null=True)
+    deposit=models.IntegerField(null=True)
     #userbooked=models.ManyToManyField(User,blank=True)
 
     def __str__(self):

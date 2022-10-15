@@ -40,9 +40,9 @@ class BuyerInfo(models.Model):
     date_of_registration = models.DateField(null=True)
     project_assigned = models.ForeignKey(Plot, on_delete=models.CASCADE)
     plot_booked = models.ForeignKey(Plot_Number, on_delete=models.CASCADE)
-    contract_type = models.CharField(choices=PAYMENT_CONTRACT, null=True)
-    deposit_amount = models.IntegerField(max_length=15, null=True)
-    balance_amount = models.IntegerField(max_length=15, null=True)
+    contract_type = models.CharField(choices=PAYMENT_CONTRACT, max_length=100, null=True)
+    deposit_amount = models.IntegerField(null=True)
+    balance_amount = models.IntegerField( null=True)
 
     def __str__(self):
         return self.last_name
@@ -62,13 +62,13 @@ class BuyerPayments(models.Model):
         ("Verified","Verified")
     )
     transactionId = models.CharField(max_length=15, null=True)
-    amount = models.IntegerField(max_length=15, null=True)
+    amount = models.IntegerField(null=True)
     paymentFrom = models.ForeignKey(BuyerInfo, on_delete=models.CASCADE)
-    paidFor = models.CharField(choices=payment_Methods, null=True)
+    paidFor = models.CharField(choices=payment_Methods, max_length=100, null=True)
     paymentMethod = models.CharField(max_length=15, null=True)
     dateReceived = models.DateField(null=True)
     receivedBy = models.CharField(max_length=15, null=True)
-    paymentstatus = models.CharField(choices=transaction_Status, null=True)
+    paymentstatus = models.CharField(choices=transaction_Status,max_length=100, null=True)
 
     def __str__(self):
         return self.transactionId
