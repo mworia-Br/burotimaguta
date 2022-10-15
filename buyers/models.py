@@ -58,11 +58,12 @@ class BuyerPayments(models.Model):
     )
 
     transaction_Status = (
-        ("In Process","In Process")
-        ("Received","Received")
+        ("In Process","In Process"),
+        ("Received","Received"),
         ("Verified","Verified")
     )
 
+    transactionId = models.CharField(max_length=15, null=True)
     amount = models.IntegerField(max_length=15, null=True)
     paymentFrom = models.ForeignKey(BuyerInfo, on_delete=models.CASCADE)
     paidFor = models.CharField(choices=payment_Methods, null=True)
@@ -70,4 +71,7 @@ class BuyerPayments(models.Model):
     dateReceived = models.DateField(null=True)
     receivedBy = models.CharField(max_length=15, null=True)
     paymentstatus = models.CharField(choices=transaction_Status, default="In Process")
+
+    def __str__(self):
+        return self.transactionId
     
