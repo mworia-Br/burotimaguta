@@ -56,7 +56,7 @@ def record_payment(request):
         else:
             messages.error(request, "Error recording payment")
     else:
-        form = PaymentsForm()
+        form = PaymentForm()
 
     return render(request, 'buyers/payments.html', {'form': form})
 
