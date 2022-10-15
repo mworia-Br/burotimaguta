@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 plotsize_choices= (
     ("50*100","50*100")
     ("100*100","100*100")
+    ("40*90","40*90")
 )
 
 class Plot(models.Model):
