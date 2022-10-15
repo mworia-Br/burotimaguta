@@ -51,9 +51,9 @@ class BuyerInfo(models.Model):
 class BuyerPayments(models.Model):
 
     payment_Methods = (
-        ("cash","cash")
-        ("Mpesa","Mpesa")
-        ("Check","Check")
+        ("cash","cash"),
+        ("Mpesa","Mpesa"),
+        ("Check","Check"),
         ("Bank Deposit","Bank Deposit")
     )
 
