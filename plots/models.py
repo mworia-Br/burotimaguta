@@ -11,13 +11,14 @@ plotsize_choices= (
 
 class Plot(models.Model):
     projectName=models.CharField(max_length=100)
+    slug = models.SlugField(unique=True, blank=True, null=True)
     seller=models.CharField(max_length=100)
     location=models.CharField(max_length=100)
     description=models.TextField()
+    nearbyAmenities=models.TextField()
     availableUnits=models.IntegerField(max_length=4)
     plotsize=models.CharField(max_length=30,choices=plotsize_choices,default="")
-    nearByamenities=models.TextField()
-    images=models.FileField(upload_to='plots/images/')
+    images=models.FileField(upload_to='plots/projectimages/')
     sellingprice=models.IntegerField(max_length=20,null=True)
     discountprice=models.IntegerField(max_length=20,null=True)
     deposit=models.IntegerField(max_length=20,null=True)
@@ -25,3 +26,14 @@ class Plot(models.Model):
 
     def __str__(self):
         return self.projectName
+
+
+class Plot_Number(models.Model):
+    project = models.ForeignKey(Plot, on_delete=models.CASCADE)
+    plotNumber = models.CharField(max_length=100)
+    slug = models.SlugField(unique=True, blank=True, null=True)
+    imageonMap = models.FileField(upload_to='plots/plotimages/',null=True)
+    price = models.IntegerField()
+
+    def __str__(self):
+        return self.plotNumber

@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-from plots.models import Plot
+from plots.models import Plot,Plot_Number
 
 
 class BuyerModel(models.Model):
@@ -39,7 +39,7 @@ class BuyerModel(models.Model):
     mobile_phone = models.CharField(max_length=15, null=True)
     project_assigned = models.ManyToManyField('Plot', blank=True)
     date_of_registration = models.DateField(null=True)
-    contract_type = models.CharField(choices=PAYMENT_CONTRACT, max_length=1, null=True)
+    contract_type = models.CharField(choices=PAYMENT_CONTRACT, null=True)
     deposit_amount = models.IntegerField(max_length=15, null=True)
     balance_amount = models.IntegerField(max_length=15, null=True)
 
