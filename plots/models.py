@@ -20,3 +20,6 @@ class Plot(models.Model):
     sellingprice=models.IntegerField(max_length=20,null=True)
     discountprice=models.IntegerField(max_length=20,null=True)
     #userbooked=models.ManyToManyField(User,blank=True)
+
+    def __str__(self):
+        return self.projectName
