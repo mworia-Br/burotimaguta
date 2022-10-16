@@ -8,11 +8,15 @@ from django.shortcuts import render, get_object_or_404, redirect
 from buyers.forms import BuyersForm, PaymentForm
 from buyers.models import BuyerInfo, BuyerPayments
 
+
 def index(request):
     buyers = BuyerInfo.objects.all()
     buyers_count = buyers.count()
 
+    payments = BuyerPayments.objects.all()
+    payment_count = payments.count()
 
+    return render(request, 'burotimaguta/index.html',{'buyers_count': buyers_count, 'payment_count': payment_count})
 
 
 def buyers(request):
