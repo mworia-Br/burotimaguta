@@ -8,6 +8,12 @@ from django.shortcuts import render, get_object_or_404, redirect
 from buyers.forms import BuyersForm, PaymentForm
 from buyers.models import BuyerInfo, BuyerPayments
 
+def index(request):
+    buyers = BuyerInfo.objects.all()
+    buyers_count = buyers.count()
+
+
+
 
 def buyers(request):
     buyers = BuyerInfo.objects.all()
