@@ -45,7 +45,7 @@ def buyer_detail(request, buyer_id):
     return render(request, 'burotimaguta/buyer_detail.html', {'buyer': buyer})
 
 
-def record_payment(request):
+def create_payment(request):
     if request.method == 'POST':
         form = PaymentForm(request.POST)
 
@@ -58,7 +58,7 @@ def record_payment(request):
     else:
         form = PaymentForm()
 
-    return render(request, 'buyers/payments.html', {'form': form})
+    return render(request, 'buyers/payment.html', {'form': form})
 
 def edit_payment(request, payment_id):
     payment = get_object_or_404(BuyerPayments, id=payment_id)
