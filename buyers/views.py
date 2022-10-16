@@ -37,7 +37,7 @@ def create_buyer(request):
     else:
         form = BuyersForm()
 
-    return render(request, 'burotimaguta/buyers.html', {'buyers_form': form})
+    return render(request, 'burotimaguta/buyer.html', {'buyers_form': form})
 
 
 def buyer_detail(request, buyer_id):
