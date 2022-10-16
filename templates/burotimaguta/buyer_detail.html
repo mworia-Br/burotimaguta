@@ -1,0 +1,48 @@
+{% extends 'base2.html' %}
+{% load bootstrap4 %}
+{% load static %}
+
+{% block content %}
+<div class="">
+    <div class="container p-5">
+        <div class="row">
+            <div class="col-md-6">
+                <span>
+                  <img src="{% if buyer.passport_photo %}{{buyer.passport_photo.url}}{% else %}{% static 'images/no_image.png' %}{% endif %}"
+                       WIDTH="400" HEIGHT="400"/>
+                </span>
+            </div>
+
+            <div class="col-md-6">
+
+                <div class="content text-capitalize">
+                    <h1>{{buyer.first_name}}</h1>
+                    <h4>{{ buyer.middle_name }} {{ buyer.last_name }}
+                        <small class="ml-3">( {{buyer.buyers_email}} )</small>
+                    </h4>
+                    <hr>
+                    <span><strong>Phone Number -</strong> {{ buyer.mobile_phone }} </span><br>
+                    <span><strong>Project Assigned -</strong> {{ buyer.project_assigned }} </span>
+                    <br>
+                    <br>
+                    <p><strong>Plot Number</strong></p>
+                    <p> {{buyer.plot_booked }}</p>
+                    <br>
+                    <a href="#" class="btn btn-outline-info">Okey</a>
+
+                    <!-- <div class="row">
+                    <div class="col-md-6">
+                      <a href="tel:+254789268466">Call for vet</a><br>
+                    </div>
+                    <div class="col-md-6">
+                      <button class="btn btn-outline-success" (click)="submitRequest()">Request this vet</button>
+                    </div>
+                  </div> -->
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
