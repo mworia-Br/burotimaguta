@@ -31,7 +31,7 @@
         <!-- page start-->
         <section class="panel">
             <header class="panel-heading" style="margin-bottom:5px">
-                <a href="{% url 'burotimaguta:create_payment' %}" style="color:white; margin-bottom:20px" class="btn btn-success btn-xs"><i class="fa fa-plus"></i> Add </a>
+                <a href="{% url 'buyers:create_payment' %}" style="color:white; margin-bottom:20px" class="btn btn-success btn-xs"><i class="fa fa-plus"></i> Add </a>
             </header>
             <!--Modal: modalConfirmDelete-->
 {#            <div class="modal fade" id="add_buyer" tabindex="-1" role="dialog"#}
@@ -102,7 +102,7 @@
                     </td>
 
                     <td>
-                        <a href="{% url 'burotimaguta:edit_payment' payment.id %}" class="btn btn-info btn-xs"><i
+                        <a href="{% url 'buyers:edit_payment' payment.id %}" class="btn btn-info btn-xs"><i
                                 class="fa fa-pencil"></i> Edit </a>
                         <a role="button" style="color:white" class="btn btn-danger btn-xs" data-toggle="modal"
                            data-target="#modalConfirm"><i class="fa fa-trash-o"></i> Delete </a>
@@ -121,7 +121,7 @@
 
                                     <!--Footer-->
                                     <div class="modal-footer flex-center" style="text-align:center">
-                                        <a href="{% url 'burotimaguta:delete_payment' payment.id %}" class="btn  btn-success">Yes</a>
+                                        <a href="{% url 'buyers:delete_payment' payment.id %}" class="btn  btn-success">Yes</a>
                                         <a type="button" class="btn  btn-danger waves-effect"
                                            data-dismiss="modal">No</a>
                                     </div>
