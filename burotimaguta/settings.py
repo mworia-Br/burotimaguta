@@ -26,6 +26,7 @@ SECRET_KEY = 'django-insecure-ss6rpr^fp@jje1t-2+^^(%73r#kkvtl0602rp#8*=6=2b0yk4)
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
+LOGIN_REDIRECT_URL = "/"
 
 
 # Application definition
@@ -127,6 +128,9 @@ USE_TZ = True
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
 
+# configuring the location for media
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

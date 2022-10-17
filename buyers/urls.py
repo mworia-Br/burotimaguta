@@ -1,10 +1,10 @@
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path
 from buyers import views
 
 app_name="buyers"
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    #path('admin/', admin.site.urls),
     path('', views.index, name='index'),
     path('buyers/', views.buyers, name='buyers'),
     path('buyers/new/', views.create_buyer, name='new_buyer'),

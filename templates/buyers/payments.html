@@ -92,7 +92,7 @@
                         <a href="{{ payment.id }}">{{payment.dateReceived}}</a>
                     </td>
                     <td class="p-name">
-                        <a href="{{ payment.id }}">{{payment.pamentMethod}}</a>
+                        <a href="{{ payment.id }}">{{payment.paymentMethod}}</a>
                     </td>
                     <td class="p-name">
                         <a href="{{ payment.id }}">{{payment.amount}}</a>
@@ -121,7 +121,7 @@
 
                                     <!--Footer-->
                                     <div class="modal-footer flex-center" style="text-align:center">
-                                        <a href="{% url 'buyers:delete_payment' payment.id %}" class="btn  btn-success">Yes</a>
+                                        <a href="#" class="btn  btn-success">Yes</a>
                                         <a type="button" class="btn  btn-danger waves-effect"
                                            data-dismiss="modal">No</a>
                                     </div>

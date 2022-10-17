@@ -45,7 +45,7 @@ class BuyerInfo(models.Model):
     registeredBy = models.CharField(max_length=15, null=True)
 
     def __str__(self):
-        return self.last_name
+        return self.first_name + " " + self.last_name
 
 
 class BuyerPayments(models.Model):

@@ -104,6 +104,17 @@ def all_payments(request):
 
 def buyer_edit(request, buyer_id):
     buyer = BuyerInfo.objects.get(id=buyer_id)
+
+    if request.method == 'POST':
+        form = BuyersForm(request.POST, instance=buyer, files=request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "buyer updated successfully")
+            return redirect("/buyers")
+        else:
+            messages.error(request, "error updating the buyer")
+    else:
+        form = BuyersForm(instance=buyer)
     return render(request, 'buyer_update_form.html', {'buyer': buyer})
 
 
