@@ -16,7 +16,7 @@ def index(request):
     payments = BuyerPayments.objects.all()
     payment_count = payments.count()
 
-    return render(request, 'burotimaguta/index.html',{'buyers_count': buyers_count, 'payment_count': payment_count})
+    return render(request, 'buyers/index.html',{'buyers_count': buyers_count, 'payment_count': payment_count})
 
 
 def buyers(request):
@@ -31,7 +31,7 @@ def buyers(request):
             messages.error(request, "Error adding buyer")
     else:
         form = BuyersForm()
-    return render(request, 'burotimaguta/buyers.html', {'buyers':buyers,'buyers_form': form})
+    return render(request, 'buyers/buyers.html', {'buyers':buyers,'buyers_form': form})
 
 
 def create_buyer(request):
@@ -40,19 +40,19 @@ def create_buyer(request):
         if form.is_valid():
             form.save()
             messages.success(request, "Buyer added booking successfuly initiated")
-            return redirect('burotimaguta:buyers')
+            return redirect('buyers:buyers')
         else:
             messages.error(request, "Error adding buyer")
 
     else:
         form = BuyersForm()
 
-    return render(request, 'burotimaguta/buyer.html', {'buyers_form': form})
+    return render(request, 'buyers/buyer.html', {'buyers_form': form})
 
 
 def buyer_detail(request, buyer_id):
     buyer = get_object_or_404(BuyerInfo, pk=buyer_id)
-    return render(request, 'burotimaguta/buyer_detail.html', {'buyer': buyer})
+    return render(request, 'buyers/buyer_detail.html', {'buyer': buyer})
 
 
 def create_payment(request):
@@ -84,7 +84,7 @@ def edit_payment(request, payment_id):
     else:
         form = PaymentForm(instance=payment)
 
-    return render(request, 'burotimaguta/edit_payment.html', {'form': form})
+    return render(request, 'buyers/edit_payment.html', {'form': form})
 
 
 def delete_payment(request, payment_id):
@@ -99,7 +99,7 @@ def delete_payment(request, payment_id):
 def all_payments(request):
     payments = BuyerPayments.objects.all()
 
-    return render(request, 'burotimaguta/payments.html', {'payments': payments})
+    return render(request, 'buyers/payments.html', {'payments': payments})
 
 
 def buyer_edit(request, buyer_id):
@@ -120,4 +120,4 @@ def buyer_update(request, buyer_id):
             messages.error(request, "error updating the buyer")
     else:
         form = BuyersForm(instance=buyer)
-    return render(request, 'burotimaguta/buyer_update_form.html', {'buyer': buyer, 'buyer_form': form})      
+    return render(request, 'buyers/buyer_update_form.html', {'buyer': buyer, 'buyer_form': form})      
