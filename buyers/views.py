@@ -9,6 +9,7 @@ from buyers.forms import BuyersForm, PaymentForm
 from buyers.models import BuyerInfo, BuyerPayments
 
 
+@login_required(login_url='/accounts/login/')
 def index(request):
     buyers = BuyerInfo.objects.all()
     buyers_count = buyers.count()
@@ -19,6 +20,7 @@ def index(request):
     return render(request, 'buyers/index.html',{'buyers_count': buyers_count, 'payment_count': payment_count})
 
 
+@login_required(login_url='/accounts/login/')
 def buyers(request):
     buyers = BuyerInfo.objects.all()
     if request.method == 'POST':
@@ -34,6 +36,7 @@ def buyers(request):
     return render(request, 'buyers/buyers.html', {'buyers':buyers,'buyers_form': form})
 
 
+@login_required(login_url='/accounts/login/')
 def create_buyer(request):
     if request.method == 'POST':
         form = BuyersForm(data=request.POST, files=request.FILES)
@@ -50,11 +53,13 @@ def create_buyer(request):
     return render(request, 'buyers/buyer.html', {'buyers_form': form})
 
 
+@login_required(login_url='/accounts/login/')
 def buyer_detail(request, buyer_id):
     buyer = get_object_or_404(BuyerInfo, pk=buyer_id)
     return render(request, 'buyers/buyer_detail.html', {'buyer': buyer})
 
 
+@login_required(login_url='/accounts/login/')
 def create_payment(request):
     if request.method == 'POST':
         form = PaymentForm(request.POST)
@@ -70,6 +75,8 @@ def create_payment(request):
 
     return render(request, 'buyers/payment.html', {'form': form})
 
+
+@login_required(login_url='/accounts/login/')
 def edit_payment(request, payment_id):
     payment = get_object_or_404(BuyerPayments, id=payment_id)
     if request.method == 'POST':
@@ -87,6 +94,7 @@ def edit_payment(request, payment_id):
     return render(request, 'buyers/edit_payment.html', {'form': form})
 
 
+@login_required(login_url='/accounts/login/')
 def delete_payment(request, payment_id):
     payment = get_object_or_404(BuyerPayments, id=payment_id)
     payment.delete()
@@ -94,14 +102,14 @@ def delete_payment(request, payment_id):
     return HttpResponseRedirect('/payments')
 
 
-
-
+@login_required(login_url='/accounts/login/')
 def all_payments(request):
     payments = BuyerPayments.objects.all()
 
     return render(request, 'buyers/payments.html', {'payments': payments})
 
 
+@login_required(login_url='/accounts/login/')
 def buyer_edit(request, buyer_id):
     buyer = BuyerInfo.objects.get(id=buyer_id)
 
@@ -118,6 +126,7 @@ def buyer_edit(request, buyer_id):
     return render(request, 'buyer_update_form.html', {'buyer': buyer})
 
 
+@login_required(login_url='/accounts/login/')
 def buyer_update(request, buyer_id):
     buyer = BuyerInfo.objects.get(id=buyer_id)
 
