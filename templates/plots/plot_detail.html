@@ -1,0 +1,50 @@
+{% extends 'base2.html' %}
+{% load bootstrap4 %}
+{% load static %}
+
+{% block content %}
+<div class="">
+    <div class="container p-5">
+        <div class="row">
+            <div class="col-md-6">
+                <span>
+                  <img src="{% if plot.passport_photo %}{{plot.images.url}}{% else %}{% static 'images/no_image.png' %}{% endif %}"
+                       WIDTH="400" HEIGHT="400"/>
+                </span>
+            </div>
+
+            <div class="col-md-6">
+
+                <div class="content text-capitalize">
+                    <h1>{{plot.projectName}}</h1>
+                    <h4>{{ plot.location }} Ksh{{ plot.sellingprice }}
+                        <small class="ml-3">( {{plot.plotsize}} )</small>
+                    </h4>
+                    <hr>
+                    <span><strong>Deposit required -</strong> Ksh{{ plot.deposit }} </span><br>
+                    <span><strong>Description -</strong> {{ plot.description }} </span>
+                    <br>
+                    <br>
+                    <p><strong>Nearby</strong></p>
+                    <p> {{plot.nearbyAmenities }}</p>
+                    <p><strong>Available Units</strong></p>
+                    <p> {{plot.availableUnits }}</p>
+                    <br>
+                    <a href="{% url 'plots:plots' %}" class="btn btn-outline-info">Close</a>
+
+                    <!-- <div class="row">
+                    <div class="col-md-6">
+                      <a href="tel:+254789268466">Call for vet</a><br>
+                    </div>
+                    <div class="col-md-6">
+                      <button class="btn btn-outline-success" (click)="submitRequest()">Request this vet</button>
+                    </div>
+                  </div> -->
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
