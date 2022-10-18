@@ -1,6 +1,6 @@
 {% extends 'base2.html' %}
 {% load static %}
-{% block title %} Payments {% endblock %}
+{% block title %} Plots {% endblock %}
 
 
 {% block content %}
@@ -23,7 +23,7 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800" style="margin-left:30px">Payments</h1>
+        <h1 class="h3 mb-0 text-gray-800" style="margin-left:30px">Plots</h1>
     </div>
 
     <!-- Content Row -->
@@ -31,7 +31,7 @@
         <!-- page start-->
         <section class="panel">
             <header class="panel-heading" style="margin-bottom:5px">
-                <a href="{% url 'buyers:create_payment' %}" style="color:white; margin-bottom:20px" class="btn btn-success btn-xs"><i class="fa fa-plus"></i> Add </a>
+                <a href="#" style="color:white; margin-bottom:20px" class="btn btn-success btn-xs"><i class="fa fa-plus"></i> Add </a>
             </header>
             <!--Modal: modalConfirmDelete-->
 {#            <div class="modal fade" id="add_buyer" tabindex="-1" role="dialog"#}
@@ -68,41 +68,37 @@
 {#                </div>#}
 {#            </div>#}
             <!--Modal: modalConfirmDelete-->
-            <table class="table table-hover p-table   responsive" width="100%" id="payments">
+            <table class="table table-hover p-table   responsive" width="100%" id="plotnumbers">
                 <thead>
                 <tr>
-                    <th>Paid By</th>
-                    <th>Paid For</th>
-                    <th>Date</th>
-                    <th>Payment Method</th>
-                    <th>Amount</th>
-                    <th>Status</th>
+                    <th>Project</th>
+                    <th>Plot Ref</th>
+                    <th>Selling At</th>
+                    <th>Booked By</th>
+                    <th>Sold</th>
                 </tr>
                 </thead>
                 <tbody>
-                {% for payment in payments %}
+                {% for plotnumber in plotnumbers %}
                 <tr>
                     <td class="p-name">
-                        <a href="{{ payment.id }}">{{payment.paymentFrom}}</a>
+                        <a href="{{ plotnumber.id }}">{{plotnumber.project}}</a>
                     </td>
                     <td class="p-name">
-                        <a href="{{ payment.id }}">{{payment.paidFor}}</a>
+                        <a href="{{ plotnumber.id }}">{{plotnumber.plotNumber}}</a>
                     </td>
                     <td class="p-name">
-                        <a href="{{ payment.id }}">{{payment.dateReceived}}</a>
+                        Ksh <a href="{{ plotnumber.id }}">{{plotnumber.price}}</a>
                     </td>
                     <td class="p-name">
-                        <a href="{{ payment.id }}">{{payment.paymentMethod}}</a>
+                        <a href="{{ plotnumber.id }}">{{plotnumber.bookedby}}</a>
                     </td>
                     <td class="p-name">
-                        <a href="{{ payment.id }}">{{payment.amount}}</a>
-                    </td>
-                    <td class="p-name">
-                        <a href="{{ payment.id }}">{{payment.paymentstatus}}</a>
+                        <a href="{{ plotnumber.id }}">{{plotnumber.sold}}</a>
                     </td>
 
                     <td>
-                        <a href="{% url 'buyers:edit_payment' payment.id %}" class="btn btn-info btn-xs"><i
+                        <a href="#" class="btn btn-info btn-xs"><i
                                 class="fa fa-pencil"></i> Edit </a>
                         <a role="button" style="color:white" class="btn btn-danger btn-xs" data-toggle="modal"
                            data-target="#modalConfirm"><i class="fa fa-trash-o"></i> Delete </a>
@@ -133,7 +129,7 @@
                     </td>
                     {% empty %}
                     <td class="p-name">
-                        <a>You haven't added any payments yet</a>
+                        <a>You haven't added any plotnumbers yet</a>
                     </td>
                 </tr>
                 {% endfor %}

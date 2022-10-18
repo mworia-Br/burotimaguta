@@ -41,7 +41,7 @@
             <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fas fa-money-check-alt"></i>
             </div>
-            <div class="sidebar-brand-text mx-3">Warda | buyers</div>
+            <div class="sidebar-brand-text mx-3">LandSale Management System</div>
         </a>
 
         <!-- Divider -->
@@ -52,6 +52,18 @@
             <a class="nav-link" href="{% url 'buyers:index' %}">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Dashboard</span></a>
+        </li>
+
+        <li class="nav-item active">
+            <a class="nav-link" href="{% url 'plots:plots' %}">
+                <i class="fas fa-fw fa-user-friends"></i>
+                <span>Projects</span></a>
+        </li>
+
+        <li class="nav-item active">
+            <a class="nav-link" href="{% url 'plots:plotnumbers' %}">
+                <i class="fas fa-fw fa-plus"></i>
+                <span>Plots</span></a>
         </li>
 
         <li class="nav-item active">
@@ -130,7 +142,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright Warda|buyers 2020</span>
+                        <span>Copyright Bray| Humpback Field Solutions 2022</span>
                     </div>
                 </div>
             </footer>

@@ -142,8 +142,12 @@ SESSION_EXPIRE_AT_BROWSER_CLOSE=True # Invalid session
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static")
+]
 
 # configuring the location for media
 MEDIA_URL = '/media/'

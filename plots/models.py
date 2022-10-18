@@ -2,6 +2,7 @@ from re import M
 from django.db import models
 from django.contrib.auth.models import User
 # Create your models here.
+#from buyers.models import BuyerInfo
 
 plotsize_choices= (
     ("40*90","40*90"),
@@ -34,6 +35,8 @@ class Plot_Number(models.Model):
     slug = models.SlugField(unique=True, blank=True, null=True)
     imageonMap = models.FileField(upload_to='plots/plotimages/',null=True)
     price = models.IntegerField()
+    bookedby = models.ForeignKey('buyers.BuyerInfo',on_delete=models.CASCADE, null=True)
+    sold = models.BooleanField(default=False)
 
     def __str__(self):
         return self.plotNumber
