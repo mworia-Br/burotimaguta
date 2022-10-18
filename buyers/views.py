@@ -1,10 +1,10 @@
-from pyexpat.errors import messages
+#from pyexpat.errors import messages
 
 # Create your views here.
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
-# from django.contrib import messages
+from django.contrib import messages
 from buyers.forms import BuyersForm, PaymentForm
 from buyers.models import BuyerInfo, BuyerPayments
 
