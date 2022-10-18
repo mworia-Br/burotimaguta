@@ -7,17 +7,24 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from buyers.forms import BuyersForm, PaymentForm
 from buyers.models import BuyerInfo, BuyerPayments
+from plots.models import Plot, Plot_Number
 
 
 @login_required(login_url='/accounts/login/')
 def index(request):
+    projects = Plot.objects.all()
+    project_count = projects.count()
+
+    plots = Plot_Number.objects.all()
+    plot_count = plots.count()
+
     buyers = BuyerInfo.objects.all()
     buyers_count = buyers.count()
 
     payments = BuyerPayments.objects.all()
     payment_count = payments.count()
 
-    return render(request, 'buyers/index.html',{'buyers_count': buyers_count, 'payment_count': payment_count})
+    return render(request, 'buyers/index.html',{'buyers_count': buyers_count, 'payment_count': payment_count, 'project_count': project_count, 'plot_count': plot_count})
 
 
 @login_required(login_url='/accounts/login/')
