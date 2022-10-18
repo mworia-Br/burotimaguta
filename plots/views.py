@@ -19,7 +19,7 @@ def plots(request):
     else:
         form = plotsForm()
     """    
-    return render(request, 'plots/plots.html', {'plots':plots,'plots_form': form})
+    return render(request, 'plots/plots.html', {'plots':plots})
 
 def plot_detail(request, plot_id):
     plot = get_object_or_404(Plot, pk=plot_id)
